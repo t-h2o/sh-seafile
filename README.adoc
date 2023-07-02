@@ -4,6 +4,15 @@
 
 https://www.seafile.com/en/home/[Seafile] is an open source file sync&share
 
+== generate environment file
+
+[source,bash]
+----
+./scripts/create-env.sh
+----
+
+Modify the `.env` file
+
 == Resource
 
 * manual: https://manual.seafile.com/deploy/[deploy seafile]
