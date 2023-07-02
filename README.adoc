@@ -1,1 +1,9 @@
 = self-host seafile
+
+== What is seafile
+
+https://www.seafile.com/en/home/[Seafile] is an open source file sync&share
+
+== Resource
+
+* manual: https://manual.seafile.com/deploy/[deploy seafile]
