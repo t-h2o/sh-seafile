@@ -8,6 +8,10 @@ alias pwgen="docker run \
 	--capitalize \
 	--secure 20 1"
 
+alias shuf_port="shuf \
+	--input-range 10000-60000 \
+	--head-count 1"
+
 create_environment_file () {
 
 	MYSQL_ROOT_PASSWORD=$(pwgen)
@@ -21,7 +25,7 @@ create_environment_file () {
 	SEAFILE_SERVER_LETSENCRYPT=false
 	SEAFILE_SERVER_HOSTNAME=docs.seafile.com
 
-	SEAFILE_PORT=80
+	SEAFILE_PORT=$(shuf_port)
 	cat > .env <<- environment
 	MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 	MYSQL_LOG_CONSOLE=${MYSQL_LOG_CONSOLE}
