@@ -13,6 +13,51 @@ https://www.seafile.com/en/home/[Seafile] is an open source file sync&share
 
 Modify the `.env` file
 
+== http nginx
+
+From the `.env`, edit and add this shunk to nginx file.
+
+[source,nginx]
+----
+server {
+  listen 80 ;
+  server_name ${SEAFILE_SERVER_HOSTNAME};
+
+  proxy_set_header X-Forwarded-For $remote_addr;
+
+     location / {
+      proxy_pass     http://${SEAFILE_SERVER_HOSTNAME}:${SEAFILE_PORT};
+      proxy_set_header   Host $host;
+      proxy_set_header   X-Real-IP $remote_addr;
+      proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header   X-Forwarded-Host $server_name;
+      proxy_set_header   X-Forwarded-Proto https;
+      proxy_read_timeout 1200s;
+      client_max_body_size 0;
+    }
+
+    location /seafhttp {
+      rewrite ^/seafhttp(.*)$ $1 break;
+      proxy_pass http://${SEAFILE_SERVER_HOSTNAME}:8082;
+      client_max_body_size 0;
+
+      proxy_connect_timeout  36000s;
+      proxy_read_timeout  36000s;
+      proxy_send_timeout  36000s;
+      send_timeout  36000s;
+      proxy_request_buffering off;
+    }
+
+    location /media {
+      root /srv/seafile/seafile-server-latest/seahub;
+    }
+
+    location ~ / {
+        proxy_pass http://${SEAFILE_SERVER_HOSTNAME}:${SEAFILE_PORT};
+    }
+}
+----
+
 == Resource
 
 * manual: https://manual.seafile.com/deploy/[deploy seafile]
