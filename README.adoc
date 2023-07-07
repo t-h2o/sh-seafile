@@ -22,6 +22,7 @@ From the `.env`, edit and add this shunk to nginx file.
 server {
   listen 80 ;
   server_name ${SEAFILE_SERVER_HOSTNAME};
+  client_max_body_size 0;
 
   proxy_set_header X-Forwarded-For $remote_addr;
 
