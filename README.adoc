@@ -23,6 +23,14 @@ This script will generate a nginx config.
 ./scripts/nginx.sh
 ----
 
+== seafile configuration
+
+add this line to `/opt/seafile-data/seafile/conf/seafile.conf`
+----
+[fileserver]
+max_download_dir_size=10000
+----
+
 == Resource
 
 * manual: https://manual.seafile.com/deploy/[deploy seafile]
