@@ -19,7 +19,7 @@ create_environment_file () {
 
 	DB_HOST=db
 	DB_ROOT_PASSWD="${MYSQL_ROOT_PASSWORD}"
-	TIME_ZONE=Etc/UTC
+	TIME_ZONE=$(timedatectl show --property=Timezone | sed 's/Timezone=\(.\+\)/\1/')
 	SEAFILE_ADMIN_EMAIL=me@example.com
 	SEAFILE_ADMIN_PASSWORD=$(pwgen)
 	SEAFILE_SERVER_LETSENCRYPT=false
