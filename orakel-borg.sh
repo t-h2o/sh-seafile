@@ -11,7 +11,7 @@ create_a_backup () {
 		--stats \
 		--progress \
 		--compression lz4 \
-		"${REMOTE_BORG}"::seafile_"$(date +"%Y-%m-%d")"
+		"${REMOTE_BORG}"::seafile_"$(date +"%Y-%m-%d_%H-%M-%S")"
 }
 
 list_backup () {
