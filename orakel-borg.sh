@@ -18,4 +18,9 @@ list_backup () {
 	borg list "${REMOTE_BORG}"
 }
 
+# $1: backupe name
+extract_backup () {
+	borg extract --progress "${REMOTE_BORG}"::"${1}"
+}
+
 list_backup
