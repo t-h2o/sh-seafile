@@ -31,6 +31,14 @@ add this line to `/opt/seafile-data/seafile/conf/seafile.conf`
 max_download_dir_size=10000
 ----
 
+== backup
+
+It's not the best things to do...
+
+----
+sudo rsync -az --progress --verbose .env seafile  user@remote:/backup/seafile
+----
+
 == Resource
 
 * manual: https://manual.seafile.com/deploy/[deploy seafile]
