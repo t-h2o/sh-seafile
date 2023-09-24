@@ -33,11 +33,26 @@ max_download_dir_size=10000
 
 == backup
 
-It's not the best things to do...
-
+. sync the main folder and the .env
 ----
 sudo rsync -az --progress --verbose .env seafile  user@remote:/backup/seafile
 ----
+. set `root` user as owner
++
+----
+chown -R root:root /backup/seafile/data/
+----
+. try your backup
+.. edit the `SEAFILE_SERVER_HOSTNAME` in `.env`
+.. make up
+.. set on the webpage
+... `system admin`
+... `settings`
+... `URL`
+.... `SERVICE_URL`
+.... `FILE_SERVER_ROOT`
+.. make down
+.. make up
 
 == Resource
 
